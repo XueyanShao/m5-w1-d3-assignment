@@ -1,9 +1,6 @@
 import React,{ Component } from "react";
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//import { ListGroup, ListGroupItem } from "reactstrap";
 import './App.css';
 import Navbar from "./navbar";
 import DisplayProducts from "./displayProducts";
@@ -47,45 +44,6 @@ class App extends React.Component {
     };
   }
 
-  // renderProducts(products) { 
-  //   return (
-  //     <div>
-  //       {products.map(product => 
-  //            <ListGroup className="product-list">
-  //              <ListGroupItem key={product.id} className="product px-5">
-  //                <div className="product-info py-3">
-  //                 <p className="product-desc">{product.desc} </p>
-  //                 <img className="product-img" src={product.image} alt={product.desc} width="150px"></img>
-  //                </div>
-                  
-  //                 <input 
-  //                 type="number" 
-  //                 name="number" 
-  //                 className="product-qty mx-3"  
-  //                 onChange={this.handleChange} 
-  //                 placeholder="0"
-  //                 />
-  //                   <span className="bg-white border-0">
-  //                      quantity
-  //                   </span>
-  //                </ListGroupItem> 
-  //            </ListGroup>)
-  //       }
-  //     </div>
-  //   );
-  // }
-  // renderCart() {
-  //   let totalAmount = 0;
-  //   this.state.value.forEach(item=> {
-  //     totalAmount += item;
-  //   });
-  //   return (
-  //       <div className="shopcart">
-  //           <FontAwesomeIcon icon={faShoppingCart} size="sm" />
-  //           <span>  {totalAmount} items</span>
-  //       </div>
-  //   )
-  // }
   handleIncrement = (addValue) => {
     if(addValue.qty<10) {
       const updatedValue = addValue.qty++;
@@ -110,11 +68,6 @@ class App extends React.Component {
           prods={this.state.products}
           handleIncrement = {this.handleIncrement}
           handleDecrement = {this.handleDecrement}
-        />
-        <DisplayProducts
-          products={this.state.products}
-          onIncrement={this.handleIncrement}
-          onDecrement={this.handleDecrement}
         />
       </div>
     );

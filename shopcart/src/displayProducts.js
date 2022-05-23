@@ -5,7 +5,7 @@ import { Modal } from "react-bootstrap";
 import { faPlusCircle, faMinusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./displayProducts.css";
+import './App.css';
 
 export default function DisplayProducts(props) {
   const [show, setShow] = useState(false);

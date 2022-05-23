@@ -1,13 +1,16 @@
 import React from 'react';
 import {Link,BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { ListGroup, ListGroupItem } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faShoppingCart,
   faRegistered,
 } from "@fortawesome/free-solid-svg-icons";
-
 import DisplayProducts from "./displayProducts";
-import './navbar.css'
+import ShowCart from "./showCart";
+import Login from "./login";
+import Checkout from "./checkout";
+import './App.css';
 
 export default function Navbar(props) {
   return (
@@ -24,10 +27,10 @@ export default function Navbar(props) {
         </Link>
         <Link to="/showCart" className="cart">
           <FontAwesomeIcon icon={faShoppingCart} size="sm" />
-          <span> {props.totalQuantity} </span>
+          <span> {props.totalValue} items</span>
         </Link>
       </nav>
-
+      
       <Routes>
         <Route
           path="/"
@@ -39,25 +42,19 @@ export default function Navbar(props) {
             />
           }
         />
+        <Route 
+          path="/showcart" 
+          element={
+             <ShowCart
+              products={props.prods}
+            />
+          } 
+        /> 
+        <Route path="login" element={<Login/>} />
+        <Route path="checkout" element={<Checkout />} />
       </Routes>
     </Router>
   );
 }
 
 
-// var Navbar = React.createClass({
-//   render: function() {
-//     return (
-//     <div>
-//       <div className="title bg-info px-5 py-5">
-//           <h1>Shop to React</h1>
-//           {this.renderCart(this.state)}
-//       </div>
-//       <div className="shopcart">
-//             <FontAwesomeIcon icon={faShoppingCart} size="sm" />
-//             <span>  {totalAmount} items</span>
-//       </div>
-//     </div>
-//     );
-//   }
-// });
