@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from "react";
 import { Card } from 'react-bootstrap';
 import FacebookLogin from 'react-facebook-login';
-import Checkout from "./checkout";
+// import Checkout from "./checkout";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -26,15 +26,19 @@ export default function Login() {
         <>
             <Card style={{width:'800px'}} className="mx-auto mt-5">
                 <Card.Header className="pb-4">
+                    {!login ?
                     <h1>Sign In</h1>
+                    : <h1>Check Out</h1>
+                    } 
                 </Card.Header>
                 <Card.Body>
                     <Card.Text>
+                        {!login && 
                         <React.Fragment>
                             <h3>Please login using one of the following:</h3>
                             <LoginForm />
                             <FacebookLogin 
-                                appId="1200532760778670"
+                                appId="548758106599895"
                                 autoLoad={false}
                                 fields="name,email,picture"
                                 scope="public_profile,user_friends"
@@ -42,6 +46,7 @@ export default function Login() {
                                 icon="fa-facebook"
                             />
                         </React.Fragment>
+                        }
                         {login &&
                             <Checkout fbpic={picture} fbdata={data} />
                         }
@@ -64,3 +69,14 @@ function LoginForm() {
     )
 }
 
+function Checkout({fbpic,fbdata}) {
+    return(
+       <React.Fragment>
+           <img src={fbpic} alt={fbdata.name} />
+           <h3 className="d-inline text-success mx-2">
+               Welcome back {fbdata.name}!
+           </h3>
+           <p className="my-5">Time to check out?</p>
+       </React.Fragment>
+    )
+}

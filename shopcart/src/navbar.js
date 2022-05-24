@@ -9,7 +9,7 @@ import {
 import DisplayProducts from "./displayProducts";
 import ShowCart from "./showCart";
 import Login from "./login";
-import Checkout from "./checkout";
+import Checkout from "./login";
 import './App.css';
 
 export default function Navbar(props) {
