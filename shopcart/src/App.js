@@ -3,7 +3,7 @@ import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Navbar from "./navbar";
-import DisplayProducts from "./displayProducts";
+import products from './products';
 
 class App extends React.Component {
 
@@ -11,38 +11,24 @@ class App extends React.Component {
     super(props);
     
     this.state = {
-      products: [
-        {
-          id:0,
-          image: './products/cologne.jpg',
-          desc: 'Unisex Cologne',
-          qty: 0,
-          ratings: 3.4,
-        },
-        {
-          id: 1,
-          image: './products/iwatch.jpg',
-          desc: 'Apple iWatch',
-          qty: 0,
-          ratings: 4.5,
-        },
-        {
-          id: 2,
-          image: './products/mug.jpg',
-          desc: 'Unique Mug',
-          qty: 0,
-          ratings: 3.3
-        },
-        {
-          id:3,
-          image: './products/wallet.jpg',
-          desc: 'Mens Wallet',
-          qty: 0,
-          ratings: 3.8
-        }
-      ]
+      sortType: "norm",
+      listNum: "",
+      products: products
     };
   }
+
+ handleSort = (listNum, sortType) => {
+    listNum.sort((a, b) => {
+      switch(sortType) {
+        case "norm": return a.id - b.id
+          break;
+        case "asc": return a.price - b.price
+          break;
+        case "desc": return b.price - a.price
+      }
+    });
+    this.setState({ sortType });
+  };
 
   handleIncrement = (addValue) => {
     if(addValue.qty<10) {
@@ -68,6 +54,9 @@ class App extends React.Component {
           prods={this.state.products}
           handleIncrement = {this.handleIncrement}
           handleDecrement = {this.handleDecrement}
+          handleSort={this.handleSort}
+          sortType={this.state.sortType}
+          listNum={this.state.listNum}
         />
       </div>
     );

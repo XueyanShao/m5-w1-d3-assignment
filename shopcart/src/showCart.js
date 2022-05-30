@@ -18,7 +18,7 @@ export default function ShowCart(props) {
                         <div className="displayP d-block">
                         <img
                         src={product.image}
-                        width="150"
+                        width="200"
                         alt={product.desc}
                         />
                         <h4>{product.desc}</h4>

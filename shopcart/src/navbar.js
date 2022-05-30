@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link,BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import { ListGroup, ListGroupItem } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faShoppingCart,
@@ -39,6 +38,9 @@ export default function Navbar(props) {
               products={props.prods}
               onIncrement={props.handleIncrement}
               onDecrement={props.handleDecrement}
+              OnSort={props.handleSort}
+              sortType={props.sortType}
+              listNum={props.listNum}
             />
           }
         />
